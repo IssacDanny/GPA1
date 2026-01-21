@@ -6,7 +6,7 @@
 HUD::HUD(const ITelemetry* telemetry, IAssetSupplier* assetSupplier)
     : m_telemetry(telemetry)
 {
-    // Get the font from the Quartermaster
+    // Get the font
     // Ensure you have a font file named "arial.ttf" (or similar) in assets/fonts/
     const sf::Font& font = assetSupplier->GetFont("game_font");
 
@@ -34,7 +34,7 @@ void HUD::Update() {
     m_scoreText.setString("Score: " + std::to_string(score));
 
     // 3. Format Stats (Misses & Accuracy)
-    // We use a stringstream to format the float to 1 decimal place nicely
+    // We use a stringstream to format the float to 1 decimal place
     std::stringstream ss;
     ss << "Misses: " << misses << " | Accuracy: " << std::fixed << std::setprecision(1) << accuracy << "%";
     

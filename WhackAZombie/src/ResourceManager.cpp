@@ -15,7 +15,7 @@ ResourceManager::~ResourceManager() {
 
 bool ResourceManager::LoadTexture(const std::string& name, const std::string& filename) {
     sf::Texture tex;
-    // Load from the "assets" folder
+
     if (!tex.loadFromFile("assets/textures/" + filename)) {
         std::cerr << "[ResourceManager] Error: Failed to load texture: " << filename << std::endl;
         return false;
@@ -29,6 +29,7 @@ bool ResourceManager::LoadTexture(const std::string& name, const std::string& fi
 
 bool ResourceManager::LoadSound(const std::string& name, const std::string& filename) {
     sf::SoundBuffer buffer;
+
     if (!buffer.loadFromFile("assets/sounds/" + filename)) {
         std::cerr << "[ResourceManager] Error: Failed to load sound: " << filename << std::endl;
         return false;
@@ -52,7 +53,7 @@ bool ResourceManager::LoadFont(const std::string& name, const std::string& filen
 }
 
 // ----------------------------------------------------------------
-// Retrieval Methods (The Contract)
+// Retrieval Methods
 // ----------------------------------------------------------------
 
 const sf::Texture& ResourceManager::GetTexture(const std::string& name) const {
@@ -79,8 +80,6 @@ const sf::SoundBuffer& ResourceManager::GetSound(const std::string& name) const 
         std::cerr << "[ResourceManager] CRITICAL: Sound not found: " << name << std::endl;
 
         if (m_sounds.empty()) {
-            // We are in trouble. Throw an exception or exit.
-            // For this assignment, we might just crash, but let's print why.
             std::cerr << "[ResourceManager] FATAL: No sounds loaded! Check assets folder." << std::endl;
             exit(-1); 
         }
@@ -96,8 +95,6 @@ const sf::Font& ResourceManager::GetFont(const std::string& name) const {
         std::cerr << "[ResourceManager] CRITICAL: Font not found: " << name << std::endl;
 
         if (m_fonts.empty()) {
-            // We are in trouble. Throw an exception or exit.
-            // For this assignment, we might just crash, but let's print why.
             std::cerr << "[ResourceManager] FATAL: No fonts loaded! Check assets folder." << std::endl;
             exit(-1); 
         }

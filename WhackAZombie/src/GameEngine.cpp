@@ -19,7 +19,6 @@ GameEngine::GameEngine()
     m_resourceManager = std::make_unique<ResourceManager>();
     
     // 3. LOAD ASSETS (FILL THE MANAGER)
-    // Note: Ensure "background.png" is actually in assets/textures/
     m_resourceManager->LoadTexture("zombie_head", "zombie.png"); 
     m_resourceManager->LoadTexture("background", "background.png");
     m_resourceManager->LoadTexture("grave", "grave.png"); 
@@ -33,12 +32,11 @@ GameEngine::GameEngine()
     m_hitSound.setBuffer(m_resourceManager->GetSound("hit"));
     
     // Setup the Background Music (Stream directly)
-    // Note: openFromFile returns false if it fails.
     if (!m_backgroundMusic.openFromFile("assets/sounds/music.mp3")) {
         std::cerr << "[GameEngine] Error: Could not load music.mp3" << std::endl;
     } else {
         m_backgroundMusic.setLoop(true); // Make it repeat forever
-        m_backgroundMusic.setVolume(50.0f); // 50% volume (polite)
+        m_backgroundMusic.setVolume(50.0f); // 50% volume
         m_backgroundMusic.play();
     } 
 
@@ -112,7 +110,6 @@ void GameEngine::ProcessEvents() {
                 // 3. Cast back to int (since our Manager expects ints)
                 int mouseX = static_cast<int>(worldPos.x);
                 int mouseY = static_cast<int>(worldPos.y);
-                // ------------------------------------------
 
                 // Pass the translated coordinates to the Zombie Manager
                 bool hit = m_zombieManager->HandleClick(mouseX, mouseY);
@@ -138,9 +135,7 @@ void GameEngine::Update(float deltaTime) {
 }
 
 void GameEngine::Render() {
-    m_window.clear(sf::Color(50, 50, 50)); // Dark Grey background
-
-    // Draw Background (if you had one loaded)
+    // Draw Background
     m_window.draw(m_backgroundSprite);
 
     // Draw Zombies
