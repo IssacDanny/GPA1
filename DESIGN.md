@@ -1,5 +1,6 @@
 
-<img width="5300" height="3832" alt="image" src="https://github.com/user-attachments/assets/a5b57e8e-7b63-46a4-a802-ddb052dc2611" />
+<img width="865" height="627" alt="image" src="https://github.com/user-attachments/assets/303738f4-b850-4156-890c-ba50383c1e0f" />
+
 
 ### Design Philosophy & Architecture
 
